@@ -22,6 +22,13 @@ This Python script serves as a basic keylogger, capturing keyboard inputs and lo
 
 2. **Customization:**
    - Modify the script to customize logging behavior, such as changing the log file name, adding additional functionalities, or adjusting key handling.
+  
+3. **Repository:**
+   - To clone the repository, use the following command:
+
+```sh
+git clone https://github.com/om-ghate/key-logger.git
+```
 
 ## Notes:
 
